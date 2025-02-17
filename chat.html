@@ -1,0 +1,98 @@
+<html>
+<head>
+    <title>Handmade Decoration Item Shop - Chatbot</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        #chatbox {
+            width: 90%;
+            max-width: 400px;
+            height: 70vh;
+            border: 1px solid #ccc;
+            background-color: #fff;
+            padding: 10px;
+            overflow-y: auto;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            margin: 10px;
+        }
+        #userInput {
+            width: calc(100% - 20px);
+            padding: 10px;
+            border: 1px solid #ccc;
+            margin-top: 10px;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .botText {
+            color: #333;
+            background-color: #e1f5fe;
+            padding: 8px;
+            border-radius: 5px;
+            margin-bottom: 5px;
+            display: inline-block;
+            max-width: 80%;
+            font-size: 14px;
+        }
+        .userText {
+            color: #fff;
+            background-color: #007bff;
+            padding: 8px;
+            border-radius: 5px;
+            margin-bottom: 5px;
+            display: inline-block;
+            max-width: 80%;
+            float: right;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div id="chatbox">
+        <div class="botText">😊</div>
+    </div>
+    <input type="text" id="userInput" placeholder="আপনার বার্তা লিখুন..." onkeypress="handleKeyPress(event)">
+
+    <script src="https://js.puter.com/v2/"></script>
+    <script>
+        const chatbox = document.getElementById('chatbox');
+        const userInput = document.getElementById('userInput');
+
+        // Initial bot message
+        const initialMessage = "আসসালামু আলাইকুম। কিভাবে আমি আপনাকে সাহায্য করতে পারি? 😊";
+        chatbox.innerHTML += `<div class="botText">${initialMessage}</div>`;
+
+        function handleKeyPress(event) {
+            if (event.key === 'Enter') {
+                const userText = userInput.value;
+                chatbox.innerHTML += `<div class="userText">${userText}</div>`;
+                userInput.value = '';
+
+                // Send user message to OpenAI via Puter.ai
+                puter.ai.chat(userText).then(response => {
+                    const botResponse = translateToBangla(response); // Translate response to Bangla
+                    chatbox.innerHTML += `<div class="botText">${botResponse}</div>`;
+                    chatbox.scrollTop = chatbox.scrollHeight;
+                });
+            }
+        }
+
+        // Function to translate OpenAI response to Bangla
+        function translateToBangla(text) {
+            // This is a placeholder for translation logic.
+            // In a real-world scenario, you would use a translation API or service.
+            // For now, we'll just return the text as-is.
+            return text;
+        }
+    </script>
+</body>
+</html>
