@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hand Made Haven</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Update the delivery banner style -->
+    <div class="delivery-banner">
+        <h2>🎁 স্পেশাল অফার! 🎁</h2>
+        <p>১০ টির বেশি প্রোডাক্ট অর্ডার করলে ডেলিভারি চার্জ ফ্রি!</p>
+    </div>
+
+    <header>
+        <div class="logo">
+            <h1>Hand Made Haven</h1>
+            <p>Crafted with Love & Care</p>
+        </div>
+        <div class="header-buttons">
+            <button id="cartBtn" onclick="toggleCart()">
+                Cart (<span id="cartCount">0</span>)
+            </button>
+            <button id="chatBtn" onclick="toggleChat()">Chat Now</button>
+        </div>
+    </header>
+
+    <main>
+        <div class="products-grid" id="productsGrid"></div>
+    </main>
+
+    <!-- Update the cart sidebar -->
+    <div id="cartSidebar" class="cart-sidebar">
+        <div class="cart-header">
+            <h2>Your Cart</h2>
+            <button class="close-cart" onclick="toggleCart()">×</button>
+        </div>
+        <div id="cartItems"></div>
+        <div class="cart-total">
+            <h3>Subtotal: ৳<span id="cartSubtotal">0</span></h3>
+            <h3>Delivery: ৳<span id="deliveryCharge">70</span></h3>
+            <h3>Total: ৳<span id="cartTotal">0</span></h3>
+            <button onclick="showCheckoutForm()">Buy Now</button>
+        </div>
+    </div>
+
+    <!-- Discount Popup -->
+    <div id="discountPopup" class="popup">
+        <div class="popup-content">
+            <h2>Special Offer!</h2>
+            <p>10% discount for you, for the next 5 hours!</p>
+        </div>
+    </div>
+
+    <!-- Checkout Form -->
+    <div id="checkoutForm" class="popup">
+        <div class="popup-content">
+            <h2>Checkout</h2>
+            <form id="orderForm" onsubmit="submitOrder(event)">
+                <input type="text" placeholder="Name" required name="name">
+                <input type="text" placeholder="Address" required name="address">
+                <input type="tel" placeholder="Phone Number" required name="phone">
+                <button type="submit">Place Order</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Chat Window -->
+    <div id="chatWindow" class="chat-window">
+        <iframe src="chat.html" frameborder="0"></iframe>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html> 
